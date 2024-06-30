@@ -1,0 +1,11 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.TecnoShop" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.TecnoShop" parent="Base.Theme.TecnoShop" >
+        <item name="android:windowTranslucentNavigation">true</item> //XML satırı, Android'de pencere gezinti çubuğunu yarı saydam hale getirmek için
+    </style>
+</resources>
