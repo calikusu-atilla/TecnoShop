@@ -19,5 +19,6 @@ class MainActivity : BaseActivity() {
         val view = binding.root
         setContentView(view)
 
+
     }
 }
