@@ -5,10 +5,12 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
+import com.example.tecnoshop.Adapter.BestSellerAdapter
 import com.example.tecnoshop.Adapter.CategoryAdapter
 import com.example.tecnoshop.Adapter.SliderAdapter
 import com.example.tecnoshop.Model.SliderModel
@@ -30,11 +32,19 @@ class MainActivity : BaseActivity() {
 
         initBanners()
         initCategory()
+        initBestSeller()
     }
 
+    private fun initBestSeller() {
+        binding.progressBarBestSeller.visibility = View.VISIBLE
 
-
-
+        viewModel.bestseller.observe(this, Observer {
+            binding.viewBestSeller.layoutManager = GridLayoutManager(this@MainActivity,2)
+            binding.viewBestSeller.adapter = BestSellerAdapter(it)
+            binding.progressBarBestSeller.visibility = View.GONE
+        })
+        viewModel.loadBestSeller()
+    }
 
 
     private fun initCategory() {
@@ -54,7 +64,7 @@ class MainActivity : BaseActivity() {
             banners(it)
             binding.progressBarBanner.visibility=View.GONE
         })
-       viewModel.loadRecommended()
+       viewModel.loadBanner()
     }
 
     private fun banners(images: List<SliderModel>) {
