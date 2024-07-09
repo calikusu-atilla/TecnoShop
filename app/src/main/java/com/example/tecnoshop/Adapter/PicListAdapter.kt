@@ -6,7 +6,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.tecnoshop.R
 import com.example.tecnoshop.databinding.ViewholderBestSellerBinding
+import com.example.tecnoshop.databinding.ViewholderPicListBinding
 
 class PicListAdapter(val items:MutableList<String>,val picMain: ImageView): RecyclerView.Adapter<PicListAdapter.Viewholder>() {
 
@@ -14,20 +16,20 @@ class PicListAdapter(val items:MutableList<String>,val picMain: ImageView): Recy
     private var selectedPosition = -1
     private var lastSelectedPosition = -1
     private lateinit var context: Context
-    inner class Viewholder(val binding: ViewholderBestSellerBinding):RecyclerView.ViewHolder(binding.root) {
+    inner class Viewholder(val binding: ViewholderPicListBinding):RecyclerView.ViewHolder(binding.root) {
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PicListAdapter.Viewholder {
         context = parent.context
-        val binding = ViewholderBestSellerBinding.inflate(LayoutInflater.from(context),parent,false)
+        val binding = ViewholderPicListBinding.inflate(LayoutInflater.from(context),parent,false)
         return Viewholder(binding)
     }
 
     override fun onBindViewHolder(holder: PicListAdapter.Viewholder, position: Int) {
         Glide.with(holder.itemView.context)
             .load(items[position])
-            .into(holder.binding.picBestSeller)
+            .into(holder.binding.picList)
 
         holder.binding.root.setOnClickListener {
             lastSelectedPosition=selectedPosition
@@ -40,7 +42,9 @@ class PicListAdapter(val items:MutableList<String>,val picMain: ImageView): Recy
                 .into(picMain)
         }
         if (selectedPosition==position){
-
+            holder.binding.picLayout.setBackgroundResource(R.drawable.grey_bg_selected)
+        } else {
+            holder.binding.picLayout.setBackgroundResource(R.drawable.grey_bg)
         }
 
 

@@ -124,27 +124,27 @@
                 android:gravity="center">
 
                 <ImageView
-                    android:id="@+id/imageView2"
+                    android:id="@+id/picSeller"
                     android:layout_width="52dp"
                     android:layout_height="52dp"
                     app:srcCompat="@drawable/seller_profil" />
 
                 <TextView
-                    android:id="@+id/textView10"
+                    android:id="@+id/SellerNameTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="TextView" />
 
                 <ImageView
-                    android:id="@+id/imageView6"
+                    android:id="@+id/msgToSellerBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="4dp"
                     app:srcCompat="@drawable/seller_mail_icon" />
 
                 <ImageView
-                    android:id="@+id/imageView7"
+                    android:id="@+id/calToSellerBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:srcCompat="@drawable/seller_phone_icon" />
@@ -178,7 +178,7 @@
                     app:srcCompat="@drawable/star" />
 
                 <TextView
-                    android:id="@+id/textView12"
+                    android:id="@+id/ratingTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
@@ -211,7 +211,7 @@
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/addToCartBtn"
+                    android:id="@+id/AddToCartBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/secondery_bg"
@@ -223,7 +223,7 @@
                     android:textSize="18sp"/>
 
                 <ImageButton
-                    android:id="@+id/cartBtn"
+                    android:id="@+id/CartBtn"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:elevation="2dp"
