@@ -10,9 +10,9 @@
         android:id="@+id/picCat"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="4dp"
         android:background="@drawable/white_cirle_bg"
         android:padding="12dp"/>
 

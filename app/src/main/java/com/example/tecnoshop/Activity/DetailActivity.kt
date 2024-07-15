@@ -70,6 +70,7 @@ class DetailActivity : BaseActivity() {
 
         binding.backBtn.setOnClickListener { finish() }
         binding.CartBtn.setOnClickListener {
+            startActivity(Intent(this@DetailActivity,CartActivity::class.java))
 
         }
 

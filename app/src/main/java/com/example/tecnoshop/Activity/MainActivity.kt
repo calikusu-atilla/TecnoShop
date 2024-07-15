@@ -1,5 +1,6 @@
 package com.example.tecnoshop.Activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -33,13 +34,21 @@ class MainActivity : BaseActivity() {
         initBanners()
         initCategory()
         initBestSeller()
+        bottomNavigation()
+    }
+
+    private fun bottomNavigation() {
+        binding.cartBtn.setOnClickListener { startActivity(Intent(this@MainActivity,CartActivity::class.java))}
+        binding.profilBtn.setOnClickListener { startActivity(Intent(this@MainActivity,ProfilActivity::class.java))}
+        binding.favoriBtn.setOnClickListener { startActivity(Intent(this,EditProfilActivity::class.java)) }
+
     }
 
     private fun initBestSeller() {
         binding.progressBarBestSeller.visibility = View.VISIBLE
 
         viewModel.bestseller.observe(this, Observer {
-            binding.viewBestSeller.layoutManager = GridLayoutManager(this@MainActivity,2)
+            binding.viewBestSeller.layoutManager = GridLayoutManager(this@MainActivity,3)
             binding.viewBestSeller.adapter = BestSellerAdapter(it)
             binding.progressBarBestSeller.visibility = View.GONE
         })
@@ -71,7 +80,7 @@ class MainActivity : BaseActivity() {
         binding.viewPagerSlider.adapter = SliderAdapter(images, binding.viewPagerSlider)
         binding.viewPagerSlider.clipToPadding = false  //ViewPager'ın kenarındaki iç boşluğa (padding) sığmasını sağlar
         binding.viewPagerSlider.clipChildren = false   //ViewPager'ın kenarındaki iç boşluğa (padding) sığmasını sağlar
-        binding.viewPagerSlider.offscreenPageLimit = 3  //ViewPager'ın kenarındaki iç boşluğa (padding) sığmasını sağlar
+        binding.viewPagerSlider.offscreenPageLimit = 6  //ViewPager'ın kenarındaki iç boşluğa (padding) sığmasını sağlar
         binding.viewPagerSlider.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER  //ViewPager'ın kenarındaki iç boşluğa (padding) sığmasını sağlar
 
         val compositePageTransformer = CompositePageTransformer().apply {  //'CompositePageTransformer' Birden fazla dönüşümü tek bir yapıda birleştirerek, her bir sayfada farklı dönüşümler uygulamak mümkün olur.

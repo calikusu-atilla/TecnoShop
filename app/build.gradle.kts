@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("com.google.gms.google-services")
+    id("kotlin-kapt")
 
 }
 
@@ -79,7 +80,21 @@ dependencies {
     implementation ("com.github.bumptech.glide:glide:4.6.1")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.6.1")
 
+    //material M3
+    implementation ("com.google.android.material:material:1.5.0")
 
+    //Room
+
+    val room_version = "2.6.1"
+
+    implementation("androidx.room:room-runtime:$room_version")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
+
+    kapt("androidx.room:room-compiler:$room_version")
+
+    //RxJava
+    implementation("androidx.room:room-rxjava3:$room_version")
+    implementation("io.reactivex.rxjava3:rxandroid:3.0.0")
 
 
 }

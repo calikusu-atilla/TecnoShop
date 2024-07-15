@@ -70,7 +70,7 @@ class MainViewModel:ViewModel() {
     }
 
     fun loadBestSeller () {
-        val Ref = firebaseDatabase.getReference("BestSeller")
+        val Ref = firebaseDatabase.getReference("Items")
         Ref.addValueEventListener(object :ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 val lists = mutableListOf<ItemsModel>()

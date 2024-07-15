@@ -8,4 +8,9 @@
     <style name="Theme.TecnoShop" parent="Base.Theme.TecnoShop" >
         <item name="android:windowTranslucentNavigation">true</item> //XML satırı, Android'de pencere gezinti çubuğunu yarı saydam hale getirmek için
     </style>
+
+    <style name="CircleImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
 </resources>

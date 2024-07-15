@@ -105,8 +105,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="180dp"
-                android:layout_marginTop="16dp">
+                android:layout_height="180dp">
 
                 <ProgressBar
                     android:id="@+id/progressBarBanner"
@@ -122,6 +121,8 @@
                     android:id="@+id/viewPagerSlider"
                     android:layout_width="match_parent"
                     android:layout_height="160dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -190,6 +191,8 @@
                     android:id="@+id/viewCategory"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -230,6 +233,8 @@
                     android:id="@+id/viewBestSeller"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -274,6 +279,7 @@
                 android:layout_marginEnd="10dp">
 
                 <LinearLayout
+                    android:id="@+id/homeBtn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.1"
@@ -282,8 +288,8 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:background="@drawable/white_bg"
-                        android:layout_gravity="center">
+                        android:layout_gravity="center"
+                        android:background="@drawable/white_bg">
 
                         <ImageView
                             android:id="@+id/imageHome"
@@ -312,6 +318,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/favoriBtn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.1"
@@ -320,8 +327,8 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:background="@drawable/white_bg"
-                        android:layout_gravity="center">
+                        android:layout_gravity="center"
+                        android:background="@drawable/white_bg">
 
                         <ImageView
                             android:id="@+id/imageFavorite"
@@ -350,6 +357,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/cartBtn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.1"
@@ -358,8 +366,8 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:background="@drawable/white_bg"
-                        android:layout_gravity="center">
+                        android:layout_gravity="center"
+                        android:background="@drawable/white_bg">
 
                         <ImageView
                             android:id="@+id/imageCart"
@@ -388,6 +396,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/profilBtn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.1"
@@ -396,8 +405,8 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:background="@drawable/white_bg"
-                        android:layout_gravity="center">
+                        android:layout_gravity="center"
+                        android:background="@drawable/white_bg">
 
                         <ImageView
                             android:id="@+id/imagePerson"
@@ -426,6 +435,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/settingBtn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.1"
@@ -434,8 +444,8 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:background="@drawable/white_bg"
-                        android:layout_gravity="center">
+                        android:layout_gravity="center"
+                        android:background="@drawable/white_bg">
 
                         <ImageView
                             android:id="@+id/imageSetting"
