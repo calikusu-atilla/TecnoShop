@@ -3,4 +3,6 @@
     <string name="intro_title"><font color="#0D4B4D">Dünyanın Gerisinde \nKalmamak için \nTeknoloji Takipte Kalın</font></string>
     <string name="intro_text">En iyi markalardan en son teknolojilere göz atin \nOnline Shop özel kampanyalardan faydalanın \nHızlı, ücretsiz kargonun keyfini çıkarın</string>
     <string name="intro_SingIn">Hesabınız yok mu? <font color="#D9B08C">Kayıt ol </font> </string>
+    <string name="forget_password_1">Lütfen kayıtlı olduğunuz e-mail adresinizi girin.\nSonrasında otomatik olarak şifre yenileme \nekranına yönlendirileceksiniz</string>
+    <string name="forget_password_2">Lütfen şifrenizi en az 8 karakter olacak, \nEn az 1 adet büyük harf ve rakam \niçerecek şekilde girinzi.</string>
 </resources>
