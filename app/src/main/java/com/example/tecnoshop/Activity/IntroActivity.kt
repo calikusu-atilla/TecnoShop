@@ -17,7 +17,7 @@ class IntroActivity : BaseActivity() {
         setContentView(view)
 
        binding.startBtn.setOnClickListener{
-           val intent = Intent (this@IntroActivity,MainActivity::class.java)
+           val intent = Intent (this@IntroActivity,LoginActivity::class.java)
            startActivity(intent)
        }
 
