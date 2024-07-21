@@ -22,6 +22,13 @@ class LoginActivity : BaseActivity() {
         val view = binding.root
         setContentView(view)
 
+        binding.backBtn.setOnClickListener { finish() }
+
+        binding.resetTxt.setOnClickListener {
+            val intent = Intent (this,PasswordForgetActivity1::class.java)
+            startActivity(intent)
+        }
+
         authViewModel.authState.observe(this, Observer { isAuthenticated ->
             if (isAuthenticated) {
                 val intent = Intent (this@LoginActivity,MainActivity::class.java)
@@ -38,7 +45,6 @@ class LoginActivity : BaseActivity() {
             }
         })
 
-        binding.backBtn.setOnClickListener { finish() }
 
         binding.registerTxt.setOnClickListener {
             val intent = Intent(this@LoginActivity,RegisterActivity::class.java)

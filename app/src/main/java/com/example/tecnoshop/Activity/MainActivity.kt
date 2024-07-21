@@ -29,6 +29,7 @@ class MainActivity : BaseActivity() {
         val view = binding.root
         setContentView(view)
 
+
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
         initBanners()

@@ -9,12 +9,13 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -78,6 +79,7 @@
                     app:boxStrokeColor="@color/Secondery_Dark">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/usernameTxt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingStart="40dp"
@@ -124,28 +126,6 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/passwordTxt"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingStart="40dp"
-                        android:inputType="textPassword"
-                        android:textColorHint="@android:color/darker_gray"/>
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="16dp"/>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:startIconDrawable="@drawable/lock_dark"
-                    android:hint="Lütfen şifrenizi tekrar giriniz"
-                    app:passwordToggleEnabled="true"
-                    app:hintTextColor="@color/Secondery_Dark"
-                    app:boxStrokeColor="@color/Secondery_Dark"
-                    >
-
-                    <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingStart="40dp"

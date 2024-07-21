@@ -27,8 +27,14 @@ class AuthRepository(private val firebaseAuthManager: FirebaseAuthManager) : Aut
         return firebaseAuthManager.getCurrentUser()
     }
 
+    //firebaseAuthManager.isUserLoggedIn(Boolean) ifadesi, FirebaseAuthManager sınıfındaki isUserLoggedIn fonksiyonunu çağırır ve gerekli parametreleri iletir.
     override fun isUserLoggedIn(): Boolean {
         return firebaseAuthManager.getCurrentUser() != null
+    }
+
+    ///firebaseAuthManager.resetPassword(email, password, callback) ifadesi, FirebaseAuthManager sınıfındaki resetPassword fonksiyonunu çağırır ve gerekli parametreleri iletir.
+     override fun resetPassword(email: String, callback: (Boolean, String?) -> Unit){
+        firebaseAuthManager.resetPassword(email, callback)
     }
 
     // AuthRepository sınıfı, FirebaseAuthManager sınıfının işlevlerini kullanarak Authentication işlemlerini yönetir.

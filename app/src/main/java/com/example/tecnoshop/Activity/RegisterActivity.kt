@@ -2,21 +2,18 @@ package com.example.tecnoshop.Activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.WindowManager
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Observer
 import com.example.tecnoshop.Data.Repository.AuthRepository
 import com.example.tecnoshop.Data.Source.FirebaseAuthManager
-import com.example.tecnoshop.R
 import com.example.tecnoshop.ViewModel.AuthViewModel
 import com.example.tecnoshop.ViewModel.AuthViewModelFactory
 import com.example.tecnoshop.databinding.ActivityRegisterBinding
 
-class RegisterActivity : BaseActivity() {
+class RegisterActivity : BaseActivity()  {
     
     private lateinit var binding: ActivityRegisterBinding
     private val authViewModel: AuthViewModel by viewModels { AuthViewModelFactory(AuthRepository(FirebaseAuthManager())) }
@@ -26,6 +23,7 @@ class RegisterActivity : BaseActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE or WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
 
         binding.backBtn.setOnClickListener { finish() } 
         
@@ -44,10 +42,10 @@ class RegisterActivity : BaseActivity() {
             }
         })
         
-        binding.registerBtn.setOnClickListener { 
+        binding.registerBtn.setOnClickListener {
             val email = binding.emailTxt.text.toString()
             val password = binding.passwordTxt.text.toString()
-            authViewModel.register(email, password)
+            authViewModel.register(email,password)
 
         }
 
