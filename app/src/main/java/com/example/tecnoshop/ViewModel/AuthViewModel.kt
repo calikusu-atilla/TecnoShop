@@ -4,20 +4,27 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.tecnoshop.Data.Repository.AuthRepository
+import com.example.tecnoshop.Data.Repository.AuthRepositoryInterFace
 import com.google.firebase.auth.FirebaseUser
 
-class AuthViewModel(private val authRepository: AuthRepository) : ViewModel() {
+class AuthViewModel(private val authRepository: AuthRepositoryInterFace) : ViewModel() {
     private val _authState = MutableLiveData<Boolean>()
     private val _authError = MutableLiveData<String?>()
 
     val authState: LiveData<Boolean> get() = _authState
     val authError: LiveData<String?> get() = _authError
 
-    fun login(email: String, password: String) {
-        authRepository.register(email,password) { success, error ->
+    init {
+        _authState.value = authRepository.isUserLoggedIn()
+    }
+
+
+    fun login (email: String, password: String) {
+        authRepository.login(email,password) { success, error ->
             if (success) {
                 _authState.postValue(true)
             } else {
+                _authState.value = false
                 _authError.postValue(error)
             }
         }
@@ -29,6 +36,7 @@ class AuthViewModel(private val authRepository: AuthRepository) : ViewModel() {
             if (success){
                 _authState.postValue(true)
             }else {
+
                 _authError.postValue(error)
             }
         }
@@ -41,7 +49,9 @@ class AuthViewModel(private val authRepository: AuthRepository) : ViewModel() {
 
 
 
-    fun getCurrentUser(): FirebaseUser? = authRepository.getCurrentUser()
+    fun getCurrentUser(): FirebaseUser? {
+        return authRepository.getCurrentUser()
+    }
 }
 
 

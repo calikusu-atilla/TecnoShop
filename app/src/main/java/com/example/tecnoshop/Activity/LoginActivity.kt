@@ -12,42 +12,42 @@ import com.example.tecnoshop.ViewModel.AuthViewModel
 import com.example.tecnoshop.databinding.ActivityLoginBinding
 
 class LoginActivity : BaseActivity() {
+
     private lateinit var binding: ActivityLoginBinding
-    private val loginViewModel: AuthViewModel by viewModels {
-        AuthViewModelFactory(AuthRepository(FirebaseAuthManager()))
-    }
+    private val authViewModel: AuthViewModel by viewModels { AuthViewModelFactory(AuthRepository(FirebaseAuthManager())) }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
 
-        loginViewModel.authState.observe(this, Observer { isAuthenticated ->
+        authViewModel.authState.observe(this, Observer { isAuthenticated ->
             if (isAuthenticated) {
                 val intent = Intent (this@LoginActivity,MainActivity::class.java)
                 startActivity(intent)
                 // Kullanıcı giriş yaptı
             } else {
                 // Kullanıcı çıkış yaptı
-
             }
         })
 
-        loginViewModel.authError.observe(this, Observer { error ->
+        authViewModel.authError.observe(this, Observer { error ->
             error?.let {
-                Toast.makeText(this,it,Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Login Error: $it",Toast.LENGTH_SHORT).show()
             }
         })
 
+        binding.backBtn.setOnClickListener { finish() }
 
-
+        binding.registerTxt.setOnClickListener {
+            val intent = Intent(this@LoginActivity,RegisterActivity::class.java)
+            startActivity(intent)
+        }
 
         binding.loginBtn.setOnClickListener {
             val  email = binding.emailTxt.text.toString()
-            val password = binding.passwordTxt.text.toString()
-            loginViewModel.register(email, password)
-
-
-
+            val  password = binding.passwordTxt.text.toString()
+            authViewModel.login(email, password)
     }
 }}

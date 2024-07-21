@@ -40,7 +40,7 @@ class MainActivity : BaseActivity() {
     private fun bottomNavigation() {
         binding.cartBtn.setOnClickListener { startActivity(Intent(this@MainActivity,CartActivity::class.java))}
         binding.profilBtn.setOnClickListener { startActivity(Intent(this@MainActivity,ProfilActivity::class.java))}
-        binding.favoriBtn.setOnClickListener { startActivity(Intent(this,EditProfilActivity::class.java)) }
+        binding.favoriBtn.setOnClickListener { startActivity(Intent(this@MainActivity,EditProfilActivity::class.java)) }
 
     }
 
