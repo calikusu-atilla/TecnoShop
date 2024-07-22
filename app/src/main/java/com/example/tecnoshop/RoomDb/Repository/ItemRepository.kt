@@ -55,12 +55,8 @@ class ItemsRepository(private val itemsDao: ItemsDao) :ItemRepositoryInterFace {
     }
 }
 
-
 /*
 sumOf -> içerisindeki ifadeleri toplar
 any -> any fonksiyonu, bir koleksiyonun herhangi bir öğesinin belirli bir koşulu sağlayıp sağlamadığını kontrol eder
-
-
-
 
  */
