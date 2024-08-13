@@ -52,7 +52,6 @@ class AuthViewModel(private val authRepository: AuthRepositoryInterFace) : ViewM
             _authError.value = error
 
         }
-
     }
 
 

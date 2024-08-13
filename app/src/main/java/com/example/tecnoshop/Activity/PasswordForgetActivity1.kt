@@ -19,7 +19,7 @@ import com.example.tecnoshop.databinding.ActivityPasswordForget1Binding
 
 class PasswordForgetActivity1 : BaseActivity() {
     private lateinit var binding : ActivityPasswordForget1Binding
-    private val authViewModel : AuthViewModel by viewModels { AuthViewModelFactory(AuthRepository(FirebaseAuthManager())) }
+    private val authViewModel : AuthViewModel by viewModels { AuthViewModelFactory(AuthRepository(FirebaseAuthManager(this))) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

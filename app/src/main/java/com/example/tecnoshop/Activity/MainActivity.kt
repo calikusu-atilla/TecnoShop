@@ -81,7 +81,7 @@ class MainActivity : BaseActivity() {
         binding.viewPagerSlider.adapter = SliderAdapter(images, binding.viewPagerSlider)
         binding.viewPagerSlider.clipToPadding = false  //ViewPager'ın kenarındaki iç boşluğa (padding) sığmasını sağlar
         binding.viewPagerSlider.clipChildren = false   //ViewPager'ın kenarındaki iç boşluğa (padding) sığmasını sağlar
-        binding.viewPagerSlider.offscreenPageLimit = 6  //ViewPager'ın kenarındaki iç boşluğa (padding) sığmasını sağlar
+        binding.viewPagerSlider.offscreenPageLimit = 1
         binding.viewPagerSlider.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER  //ViewPager'ın kenarındaki iç boşluğa (padding) sığmasını sağlar
 
         val compositePageTransformer = CompositePageTransformer().apply {  //'CompositePageTransformer' Birden fazla dönüşümü tek bir yapıda birleştirerek, her bir sayfada farklı dönüşümler uygulamak mümkün olur.

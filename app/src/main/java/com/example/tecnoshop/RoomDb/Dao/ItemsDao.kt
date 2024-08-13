@@ -7,16 +7,17 @@ import androidx.room.Query
 import androidx.room.Update
 import com.example.tecnoshop.RoomDb.Entity.ItemsModelDb
 
+
 @Dao
 interface ItemsDao {
 
     // Veritabanına bir item eklemek için kullanılır. Eğer item zaten mevcutsa, üzerine yazılır.
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertItem(Item: ItemsModelDb)
+    suspend fun insertItem(item: ItemsModelDb)
 
     // Veritabanındaki bir itemi güncellemek için kullanılır.
     @Update
-    suspend fun updateItem(Item: ItemsModelDb)
+    suspend fun updateItem(item: ItemsModelDb)
 
     // Belirli bir id'ye sahip itemi veritabanından silmek için kullanılır.
     @Query("DELETE FROM items WHERE id = :id")

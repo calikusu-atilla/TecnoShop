@@ -1,24 +1,47 @@
 package com.example.tecnoshop.Data.Source
 
+import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.userProfileChangeRequest
 
-class FirebaseAuthManager {
+class FirebaseAuthManager(private val context: Context) {
 
     private val auth: FirebaseAuth = FirebaseAuth.getInstance() //Firebase Auth işlemleri tanımlanıyor
 
+
     fun login(email: String, password: String, callback: (Boolean, String?) -> Unit) {  //login fonsiyonu kullanıcıdan email ve password bilgileri alınır giriş işleminin sonucunu callback atanır. callback giriş işleminin başarılı olup olmadığını belirten bir Boolean ve hata mesajını içerebilecek bir String parametre alır.
         auth.signInWithEmailAndPassword(email, password)       //signInWithEmailAndPassword metodu, giriş işlemini başlatır
-            .addOnCompleteListener { task ->                   //addOnCompleteListener metodu ile işlem tamamlandığında yapılacakları belirtir. task nesnesi, işlemin sonucunu içerir.
-                if (task.isSuccessful) { // Eğer giriş işlemi başarılı olursa callback fonksiyonunu çağırarak başarı durumunu true ve hata mesajı null döner.
-                    Log.d("FirebaseAuthManager", "Login successful")
-                    callback(true, null)
-                } else {                                       // Eğer giriş işlemi başarısız olursa callback fonksiyonunu çağırarak başarı durumunu false ve hata mesajı döner.
-                    Log.e("FirebaseAuthManager", "Login failed: ${task.exception?.message}")
-                    callback(false, task.exception?.message)
+            .addOnCompleteListener { task -> //addOnCompleteListener metodu ile işlem tamamlandığında yapılacakları belirtir. task nesnesi, işlemin sonucunu içerir.
+                val user = auth.currentUser   // giriş yapmış olan kullanıcı alınıyor
+                if (user?.isEmailVerified == true) {   //E- posta doğrulaması kontrol ediliyor
+
+
+                    // E-posta doğrulanmış
+
+
+                    if (task.isSuccessful) { // Eğer giriş işlemi başarılı olursa callback fonksiyonunu çağırarak başarı durumunu true ve hata mesajı null döner.
+
+                        //Giriş Başarılı
+                        Log.d("FirebaseAuthManager", "Login successful")
+                        callback(true, null)
+                    } else { // Eğer giriş işlemi başarısız olursa callback fonksiyonunu çağırarak başarı durumunu false ve hata mesajı döner.
+
+                        //Giriş başarısız
+                        Log.e("FirebaseAuthManager", "Login failed: ${task.exception?.message}")
+                        callback(false, task.exception?.message)
+                    }
+
+
+                }else {
+                    // E-posta doğrulanmamış
+                    Toast.makeText(context,"E-posta adresiniz doğrulanmamış. Lütfen e-postanızı kontrol edin.", Toast.LENGTH_LONG).show()
+                    auth.signOut()
+                    callback(false, "E-posta doğrulanmamış.")
                 }
+
             }
     }
 
@@ -26,16 +49,17 @@ class FirebaseAuthManager {
         auth.createUserWithEmailAndPassword(email, password)  //createUserWithEmailAndPassword metodu, kullanıcı oluşturma işlemini başlatır
             .addOnCompleteListener { task ->                   //addOnCompleteListener metodu ile işlem tamamlandığında yapılacakları belirtir. task nesnesi, işlemin sonucunu içerir.
                 if (task.isSuccessful) {                      // Eğer giriş işlemi başarılı olursa callback fonksiyonunu çağırarak başarı durumunu true ve hata mesajı null döner.
-                    /*val user = auth.currentUser
-                    val profileUpdates = userProfileChangeRequest {
-                        displayName = username
-                    }
-                    user?.updateProfile(profileUpdates)
-                        ?.addOnCompleteListener { updateTask ->
-                            if (updateTask.isSuccessful) {
-                                println("Kullanıcı adı güncellendi")
+                    val user = auth.currentUser               // giriş yapmış olan kullanıcı alınıyor
+                    user?.sendEmailVerification()             // eğer mevcut kullanıcı null değilse mevcut kullanıcıya doğrulama e-postası gönderilir
+                        ?.addOnCompleteListener { verifyTask ->   //sendEmailVerification() fonksiyonunun tamamlanmasını dinleyen bir OnCompleteListener ekler.
+                            if (verifyTask.isSuccessful) {       // sonuç olumlu veya olumsuz  ise toast mesajı döner olumlu yada olumsuz diye
+                                // Doğrulama e-postası gönderildi.
+                                Toast.makeText(context,"Doğrulama e-postası gönderildi. Lütfen e-postanızı kontrol edin.", Toast.LENGTH_LONG).show()
+                                val user = auth.signOut()
+                            }else {
+                                Toast.makeText(context,"Doğrulama e-postası gönderilemedi.", Toast.LENGTH_SHORT).show()
                             }
-                        }*/
+                        }
                     Log.d("FirebaseAuthManager", "Register successful")
                     callback(true, null)
                 } else {                                       // Eğer giriş işlemi başarısız olursa callback fonksiyonunu çağırarak başarı durumunu false ve hata mesajı döner.

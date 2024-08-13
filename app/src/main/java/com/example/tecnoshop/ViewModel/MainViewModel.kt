@@ -29,6 +29,7 @@ class MainViewModel:ViewModel() {
     val bestseller : LiveData<MutableList<ItemsModel>> = _bestseller
 
     fun loadBanner(){  // Banner verilerini yükleyen bir fonksiyon oluşturuldu
+
         val Ref = firebaseDatabase.getReference("Banner") //FireBasedeki Banner referensına ulaşılıyor
         Ref.addValueEventListener(object : ValueEventListener{ //firebase verilerinde değişik olduğunda veri çekmek için dinleyici oluşuruldu.
             override fun onDataChange(snapshot: DataSnapshot) { //onDataChange fonksiyonu, veritabanındaki veriler her değiştiğinde tetiklenir. snapshot parametresi üzerinden veriler okunur ve SliderModel türündeki veriler lists listesine eklenir.

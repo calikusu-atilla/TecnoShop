@@ -16,7 +16,7 @@ import com.example.tecnoshop.databinding.ActivityRegisterBinding
 class RegisterActivity : BaseActivity()  {
     
     private lateinit var binding: ActivityRegisterBinding
-    private val authViewModel: AuthViewModel by viewModels { AuthViewModelFactory(AuthRepository(FirebaseAuthManager())) }
+    private val authViewModel: AuthViewModel by viewModels { AuthViewModelFactory(AuthRepository(FirebaseAuthManager(this))) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,10 +29,9 @@ class RegisterActivity : BaseActivity()  {
         
         authViewModel.authState.observe( this, Observer { isAuthenticated -> 
             if (isAuthenticated) {
-                val intent = Intent (this@RegisterActivity,LoginActivity::class.java)
+                val intent = Intent (this,LoginActivity::class.java)
                 startActivity(intent)
-            }else {
-                
+                finish()
             }
         })
         

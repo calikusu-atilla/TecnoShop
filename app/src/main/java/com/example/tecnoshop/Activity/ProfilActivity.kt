@@ -19,7 +19,7 @@ import com.example.tecnoshop.databinding.ActivityProfilBinding
 class ProfilActivity : BaseActivity() {
 
     private lateinit var binding: ActivityProfilBinding
-    private val authViewModel : AuthViewModel by viewModels { AuthViewModelFactory(AuthRepository(FirebaseAuthManager())) }
+    private val authViewModel : AuthViewModel by viewModels { AuthViewModelFactory(AuthRepository(FirebaseAuthManager(this))) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

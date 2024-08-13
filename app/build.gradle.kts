@@ -4,6 +4,7 @@ plugins {
     id("com.google.gms.google-services")
     id("kotlin-kapt")
 
+
 }
 
 android {
@@ -83,18 +84,19 @@ dependencies {
     //material M3
     implementation ("com.google.android.material:material:1.5.0")
 
-    //Room
-
+    // Room
     val room_version = "2.6.1"
-
     implementation("androidx.room:room-runtime:$room_version")
-    annotationProcessor("androidx.room:room-compiler:$room_version")
-
     kapt("androidx.room:room-compiler:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
 
-    //RxJava
+    // RxJava
     implementation("androidx.room:room-rxjava3:$room_version")
     implementation("io.reactivex.rxjava3:rxandroid:3.0.0")
+
+    // Kotlin Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
 
 
 }

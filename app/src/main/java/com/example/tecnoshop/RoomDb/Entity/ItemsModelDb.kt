@@ -6,6 +6,7 @@ import androidx.room.PrimaryKey
 // "items" adında bir tablo tanımlıyoruz.
 @Entity(tableName = "items")
 data class ItemsModelDb(
+
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
 

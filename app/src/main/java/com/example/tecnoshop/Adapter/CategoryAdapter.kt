@@ -32,4 +32,3 @@ class CategoryAdapter(val items:MutableList<CategoryModel>):RecyclerView.Adapter
 
     override fun getItemCount(): Int = items.size
     }
-
